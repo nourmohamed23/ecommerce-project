@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Order confirmed | ShopEase{% endblock %}
+{% block content %}
+<section class="success-card">
+    {% if error %}
+    <span class="eyebrow">Unable to complete order</span>
+    <h1>Order not placed</h1>
+    <p>{{ error }}</p>
+    <div class="actions"><a class="button secondary" href="{% url 'cart_detail' %}">Return to cart</a><a class="button ghost" href="{% url 'product_list' %}">Continue shopping</a></div>
+    {% else %}
+    <span class="eyebrow">Thank you</span>
+    <h1>Order confirmed</h1>
+    <p>Your order has been placed successfully. We appreciate your business and will keep you updated.</p>
+    <div class="actions"><a class="button" href="{% url 'order_history' %}">View order history</a><a class="button secondary" href="{% url 'product_list' %}">Continue shopping</a></div>
+    {% endif %}
+</section>
+{% endblock %}

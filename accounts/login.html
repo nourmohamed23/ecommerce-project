@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Login | NonSense{% endblock %}
+{% block content %}
+    <section class="auth-card">
+        <span class="eyebrow">Welcome back</span><h1>Log in</h1><p class="page-intro">Sign in to manage your cart and orders.</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log in</button>
+        </form>
+        <p class="item-meta">Don't have an account? <a href="{% url 'register' %}">Create one</a>.</p>
+    </section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Create account | NonSense{% endblock %}
+{% block content %}
+    <section class="auth-card">
+    <span class="eyebrow">Join NonSense</span><h1>Create account</h1><p class="page-intro">Set up your account to make checkout simple.</p>
+    <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Create account</button>
+    </form>
+    <p class="item-meta">Already have an account? <a href="{% url 'login' %}">Log in</a>.</p>
+    </section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Welcome to NonSense{% endblock %}
+{% block content %}
+<section class="home-hero">
+    <div>
+        <span class="eyebrow">Simple shopping, thoughtfully curated</span>
+        <h1>Find the things that make everyday life better.</h1>
+        <p class="page-intro">Discover useful products across tech, beauty, lifestyle, and more, all in one easy-to-browse store.</p>
+        <a class="button" href="{% url 'product_list' %}">Shop now</a>
+    </div>
+    <div class="hero-art" aria-hidden="true"><span>✦</span></div>
+</section>
+<section class="home-section">
+    <div class="section-heading"><div><span class="eyebrow">Why NonSense</span><h2>Shopping made simple</h2></div></div>
+</section>
+<section class="home-cta">
+    <h2>Ready to discover something new?</h2>
+    <a class="button secondary" href="{% url 'product_list' %}">Browse all products</a>
+</section>
+{% endblock %}

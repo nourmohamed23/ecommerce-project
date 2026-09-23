@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ product.name }} | NonSense{% endblock %}
+{% block content %}
+<div class="detail-layout">
+    <div class="panel">
+        {% if product.image %}
+        <img class="product-image" src="{% static product.image.name|cut:'product_images/' %}" alt="{{ product.name }}">
+        {% else %}
+        <div class="image-placeholder" aria-hidden="true">✦</div>
+        {% endif %}
+    </div>
+    <section class="detail-copy">
+        <p class="eyebrow">{{ product.category }}</p>
+        <h1>{{ product.name }}</h1>
+        <p class="price">LE{{ product.price|floatformat:2 }}</p>
+        <p class="detail-description">{{ product.description|default:"A thoughtfully selected product for your everyday needs." }}</p>
+        {% if product.stock_quantity > 0 %}<a class="button" href="{% url 'add_to_cart' product.id %}">Add to cart</a>{% else %}<p class="stock-out">Currently out of stock</p>{% endif %}
+        <div class="actions"><a class="button ghost" href="{% url 'product_list' %}">Back to products</a></div>
+    </section>
+        {% if similar_products %}
+        <section class="similar-products">
+            <h2>Similar Products</h2>
+            <div class="product-grid">
+                {% for item in similar_products %}
+                <div class="product-card">
+                    {% if item.image %}
+                    <img class="product-image" src="{% static item.image.name|cut:'product_images/' %}" alt="{{ item.name }}">
+                    {% endif %}
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.price }} EGP</p>
+                    <a href="{% url 'product_detail' item.id %}">View Details</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+    {% endblock %}
